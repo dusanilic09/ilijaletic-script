@@ -1,0 +1,7 @@
+---
+
+- name: Install mariaDB
+  apt:
+    name: "mariadb-server"
+    state: latest
+    update_cache: yes

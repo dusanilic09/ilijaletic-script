@@ -1,0 +1,11 @@
+---
+
+- hosts: debian10_servers
+  become: true
+  roles:
+    - set_NGINX
+    - set_PHP
+    - set_APACHE
+    - set_mariaDB
+    - set_SSH
+    - set_UFW

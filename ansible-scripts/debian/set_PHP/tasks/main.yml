@@ -1,0 +1,29 @@
+---
+- name: Install lsb-release
+  apt:
+    name: "lsb-release"
+    state: latest
+    update_cache: yes
+- name: Install apt-transport-https
+  apt:
+    name: "apt-transport-https"
+    state: latest
+- name: Install ca-certificates
+  apt:
+    name: "ca-certificates"
+    state: latest
+- name: downloading GPG key
+  get_url:
+    url: https://packages.sury.org/php/apt.gpg
+    dest: /etc/apt/trusted.gpg.d/php.gpg
+- name: adding repository
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list.d/php.list
+    state: present
+    insertafter: EOF
+    line: deb https://packages.sury.org/php/ buster main
+    create: yes
+- name: Installing PHP
+  apt:
+    update_cache: yes
+    name: "php7.4"

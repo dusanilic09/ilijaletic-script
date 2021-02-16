@@ -1,0 +1,14 @@
+---
+
+- name: Installing Nginx
+  apt:
+    name: "nginx"
+    state: latest
+- name: Copying standard nginx default config
+  ansible.builtin.copy:
+    src: "{{ nginx_config_location }}"
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes

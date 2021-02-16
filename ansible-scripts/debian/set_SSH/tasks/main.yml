@@ -1,0 +1,20 @@
+---
+- name: Install openssh-server
+  apt:
+    name: "openssh-server"
+    state: latest
+    update_cache: yes
+- name: copying standard sshd_config file 
+  ansible.builtin.copy:
+    src: "{{ sshd_config_location }}"
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+- name: enabling and starting ssh
+  ansible.builtin.systemd:
+    name: ssh.service
+    daemon_reload: yes
+    enabled: yes
+    state: reloaded

@@ -1,0 +1,5 @@
+---
+- name: setting timezone
+  timezone:
+          name: "{{ continent_city }}" 
+

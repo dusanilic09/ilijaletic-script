@@ -1,0 +1,16 @@
+---
+- name: creating user
+  ansible.builtin.user:
+    groups: "sudo"
+    append: "{{ sudo_bolean }}"
+    name: "{{ user_name }}"
+    password: "{{ password_name | password_hash('sha512') }}"
+    update_password: on_create
+    create_home: yes
+    shell: /bin/bash
+
+- name: adding ssh keys file
+  ansible.posix.authorized_key:
+    user: "{{ user_name }}"
+    state: "{{ key_bolean }}"
+    key: "{{ pub_key }}"

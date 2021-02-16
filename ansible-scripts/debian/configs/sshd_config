@@ -1,0 +1,24 @@
+#	Standard sshd_config file created by Shandoola Doo
+
+
+ChallengeResponseAuthentication no
+
+UsePAM yes
+
+X11Forwarding yes
+
+PrintMotd no
+
+AcceptEnv LANG LC_*
+
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+Protocol 2
+
+PermitRootLogin no
+
+PasswordAuthentication no
+
+MaxAuthTries 3
+
+Port 2288

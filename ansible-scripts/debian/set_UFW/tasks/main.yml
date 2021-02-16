@@ -1,0 +1,21 @@
+---
+
+- name: Install UFW
+  apt:
+    name: "ufw"
+    state: latest
+- name: Enable UFW
+  ufw:
+    state: enabled
+- name: port 80 allow rule
+  ufw:
+    rule: allow
+    port: 80
+- name: port 443 allow rule
+  ufw:
+    rule: allow
+    port: 443
+- name: port 2288 allow rule
+  ufw:
+    rule: allow
+    port: 2288

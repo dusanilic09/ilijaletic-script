@@ -1,0 +1,8 @@
+---
+
+- hosts: debian10_servers
+  become: true
+  roles:
+          - timezone
+          - handytools
+          
